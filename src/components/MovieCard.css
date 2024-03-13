@@ -5,6 +5,7 @@
     overflow: hidden;
     max-height: 25rem;
     position: relative;
+    box-shadow: 0px 5px 10px 0px rgb(51, 17, 248);
 }
 .poster img{
     width: 15rem;
@@ -13,13 +14,14 @@
 
 
 .overview{
+    padding:5px;
   transform: translateY(100%);
   position: absolute;
   top:0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgb(209, 235, 13);
+  background:linear-gradient(rgb(4, 226, 4),rgb(0, 242, 255),purple) ;
   overflow: auto;
   margin-top: 3.5rem;
   border-radius: 1.5rem;

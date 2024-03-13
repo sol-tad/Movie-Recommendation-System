@@ -4,6 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import { useEffect } from "react";
 import MovieCard from "./components/MovieCard";
+import Header from "./components/Header";
 
 function App() {
   const API_URL =
@@ -19,17 +20,7 @@ function App() {
 
   return (
     <div className="app">
-      <div className="searchNav">
-        <div>
-          <h1>movies</h1>
-        </div>
-        <div>
-          <form>
-            <input type="text" placeholder="Search Movies" />
-            <button>Search</button>
-          </form>
-        </div>
-      </div>
+      <Header />
 
       <div className="movies">
         {movies.map((movie) => (
