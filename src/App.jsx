@@ -21,7 +21,10 @@ function App() {
 
       <div className="movies">
         {movies.map((movie) => (
+          <>
           <MovieCard movie={movie} />
+          </>
+          
         ))}
       </div>
     </div>
