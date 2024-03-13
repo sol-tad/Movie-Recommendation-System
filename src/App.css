@@ -8,8 +8,10 @@
   background-color: rgb(251, 251, 251);
 }
 .movies {
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .searchNav {
   display: flex;

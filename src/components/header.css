@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgb(237, 53, 53),black);
+    background: linear-gradient(rgb(243, 17, 17),rgb(18, 12, 12));
     height: 10vh;
     color: white;
     transition:all 0.5s;
