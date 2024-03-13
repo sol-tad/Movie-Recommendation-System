@@ -12,7 +12,13 @@ function MovieCard({movie}) {
       </div>
       <div className="info">
         <p className="title">{movie.title}</p>
-        <p className="vote"></p>
+        <p className="date">{movie.release_date}</p>
+        <p className="vote">{movie.vote_average}</p>
+      </div>
+      <div className='overview'>
+        <h2 className='titleOverview'>Overview:</h2>
+        <h3 className='overviewInfo'>{movie.overview}</h3>
+
       </div>
     </div>
   );

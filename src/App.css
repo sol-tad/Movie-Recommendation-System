@@ -1,8 +1,15 @@
-*{
-  padding:0;
+* {
+  padding: 0;
   margin: 0;
 }
-.movies{
+.app {
+  margin: 1.5rem;
+}
+.movies {
+  display: flex;
+  flex-wrap: wrap;
+}
+.searchNav {
   display: flex;
   flex-wrap: wrap;
 }
