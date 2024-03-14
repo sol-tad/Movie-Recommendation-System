@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
 import Header from "./components/Header";
+import Login from "./components/Login";
+import SignUp from "./components/SignUp";
+import "./Log_sign.css";
 
 function App() {
   const API_URL =
@@ -16,18 +20,31 @@ function App() {
   console.log(movies);
 
   return (
-    <div className="app">
-      <Header />
+    <Router>
+      <div className="app">
+        <Header />
 
-      <div className="movies">
-        {movies.map((movie) => (
-          <>
-          <MovieCard movie={movie} />
-          </>
-          
-        ))}
+        <Switch>
+          <Route path="/home">
+            <div className="movies">
+              {movies.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+              ))}
+            </div>
+          </Route>
+          <Route path="/movies">
+            <div className="movies">
+              {movies.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+              ))}
+            </div>
+          </Route>
+
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
 
