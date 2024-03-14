@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+// App.jsx
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import MovieCard from "./components/MovieCard";
@@ -11,30 +12,34 @@ function App() {
   const API_URL =
     "https://api.themoviedb.org/3/movie/popular?api_key=5fe36522e1bd3066b9333dbc4be8d12e&language=en-US";
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setMovies(data.results));
   }, []);
 
-  console.log(movies);
+  const filteredMovies = movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <Router>
       <div className="app">
-        <Header />
+        <Header setSearchTerm={setSearchTerm} />
 
         <Switch>
           <Route path="/home">
             <div className="movies">
-              {movies.map((movie) => (
+              {filteredMovies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
             </div>
           </Route>
           <Route path="/movies">
             <div className="movies">
-              {movies.map((movie) => (
+              {filteredMovies.map((movie) => (
                 <MovieCard key={movie.id} movie={movie} />
               ))}
             </div>

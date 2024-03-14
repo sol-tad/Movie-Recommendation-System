@@ -1,10 +1,9 @@
+// Header.jsx
 import React from "react";
-import { Link,useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./header.css";
-import Login from "./Login";
-import SignUp from "./SignUp";
 
-function Header() {
+function Header({ setSearchTerm }) {
   const history = useHistory();
 
   const handleSignUpLinkClick = () => {
@@ -14,12 +13,18 @@ function Header() {
   const handleLoginLinkClick = () => {
     history.push("/login");
   };
-   const handleHomeLinkClick = () => {
-     history.push("/home");
-   };
-   const handleMoviesLinkClick = () => {
-     history.push("/movies");
-   };
+
+  const handleHomeLinkClick = () => {
+    history.push("/home");
+  };
+
+  const handleMoviesLinkClick = () => {
+    history.push("/movies");
+  };
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   return (
     <div className="header_outer_container">
@@ -31,7 +36,6 @@ function Header() {
             <li>Favorite</li>
             <li onClick={handleSignUpLinkClick}>Sign Up</li>
             <li onClick={handleLoginLinkClick}>Login</li>
-
             <li></li>
           </ul>
         </div>
@@ -39,7 +43,11 @@ function Header() {
           <ul>
             <li>
               <form>
-                <input type="text" placeholder="Search Movies" />
+                <input
+                  type="text"
+                  placeholder="Search Movies"
+                  onChange={handleSearch}
+                />
                 <button>Search</button>
               </form>
             </li>
