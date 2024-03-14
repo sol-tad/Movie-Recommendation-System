@@ -1,14 +1,23 @@
 import React,{useState} from 'react'
+import { useHistory } from 'react-router-dom';
 
 const SignUp = (props) => {
+  const history = useHistory();
     const[email,setEmail]= useState('');
     const[pass,setPass]= useState('');
     const[name,setName]=useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit =(e)=>{
         e.preventDefault();
-        console.log(email);
-    }
+        
+        if (!email || !pass || !name) {
+          setErrorMessage('Please fill out all fields');
+        } else {
+          console.log('Signup successful');
+          history.push('/home');
+        }
+    };
   return (
     <div className='auth-form-container'>
         <h2 >Sign Up</h2> <br/>
@@ -22,9 +31,11 @@ const SignUp = (props) => {
         <input value={pass} onChange={(e)=> setPass(e.target.value)}type="password" placeholder="********" id="pw" name="pw"/>
 
         <button className="link-btn"onClick={()=>props.onFormSwitch('login')}>Sign Up</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
     </form>
     </div>
-  )
-}
+  );
+};
 
 export default SignUp

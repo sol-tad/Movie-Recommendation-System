@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
+  const history = useHistory(); 
+
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // Define errorMessage state variable
+
 
   const handleLogin = () => {
     const defaultEmail = 'Team6@gmail.com';
@@ -11,18 +15,18 @@ const Login = (props) => {
 
     if (email === defaultEmail && pass === defaultPassword) {
       localStorage.setItem('authenticated', 'true');
-
-
-      alert('Login successful');
-
+      history.push('/home');
     } else {
-      alert('Login failed. Please check your credentials.');
+      setErrorMessage('Invalid email or password. Please check your credentials.');
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleLogin();
+  };
+  const goToSignUp = () => {
+    history.push('/signup');
   };
 
   return (
@@ -48,9 +52,11 @@ const Login = (props) => {
           name="pw"
         />
         <button type="submit">Log In</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
       </form>
 
-      <button className="link-btn" onClick={() => props.onFormSwitch('signup')}>
+      <button className="link-btn" onClick={goToSignUp}>
         Don't have an account? SignUp here.
       </button>
     </div>
