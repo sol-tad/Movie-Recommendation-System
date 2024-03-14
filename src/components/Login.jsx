@@ -6,7 +6,7 @@ const Login = (props) => {
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
-  const [errorMessage, setErrorMessage] = useState(''); // Define errorMessage state variable
+  const [errorMessage, setErrorMessage] = useState(''); 
 
 
   const handleLogin = () => {
