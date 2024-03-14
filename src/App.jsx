@@ -5,7 +5,7 @@ import MovieCard from "./components/MovieCard";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import "./Log_sign.css";
+import "../src/components/Log_sign.css";
 
 function App() {
   const API_URL =
