@@ -1,7 +1,19 @@
 import React from 'react'
-import "./MovieCard.css";
+import "./MovieCard.css"
+import { useFavMovie } from "../App";
 
 function MovieCard({movie}) {
+  const { favMovies, addFav, removeFav } = useFavMovie();
+
+  const isMovieInFav = favMovies.some((favmovie) => favmovie.id === movie.id);
+
+  const handleCardAction = () => {
+    if (isMovieInFav) {
+      removeFav(movie.id);
+    } else {
+      addFav(movie);
+    }
+  };
   return (
     <>
       <div className="card">
@@ -16,8 +28,10 @@ function MovieCard({movie}) {
           <p className="date">{movie.release_date}</p>
           <p className="vote">{movie.vote_average}</p>
         </div>
-        <div>
-          <button className='favorite'>Add to Watch List</button>
+       <div>  <button onClick={handleCardAction} className="favorite">
+        {isMovieInFav ? 'Remove from Watch List' : 'Add to Watch List'}
+
+        </button>
         </div>
         <div className="overview">
           <h2 className="titleOverview">Overview:</h2>

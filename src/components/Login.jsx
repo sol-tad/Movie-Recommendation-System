@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = (props) => {
-  const history = useHistory(); 
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const [errorMessage, setErrorMessage] = useState(''); 
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ const Login = (props) => {
     if (user) {
       localStorage.setItem('authenticated', 'true');
       console.log('Login successful');
-      history.push('/home');
+      navigate('/home');
     } else {
       setErrorMessage('Invalid email or password. Please check your credentials.');
     }
@@ -25,7 +25,7 @@ const Login = (props) => {
   };
 
   const goToSignUp = () => {
-    history.push('/signup');
+    navigate('/signup');
   };
 
   return (
@@ -33,7 +33,7 @@ const Login = (props) => {
       <h2>Login</h2> <br/>
       <form className="login" onSubmit={handleSubmit}>
         <label htmlFor="email"> Email</label>
-        <input value={formData.email} onChange={handleChange} type="email"  placeholder='your email'id="email" name="email"/>
+        <input value={formData.email} onChange={handleChange} type="email"  placeholder='your email' id="email" name="email"/>
         <label htmlFor="pw">Password</label>
         <input value={formData.password} onChange={handleChange} type="password" placeholder="********" id="pw" name="password"/>
         <button type="submit">Log In</button>

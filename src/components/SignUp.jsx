@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 
 const SignUp = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({ email: '', password: '', name: '' });
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -14,7 +15,7 @@ const SignUp = (props) => {
     } else {
       props.onSignUp(formData); 
       console.log('Signup successful');
-      history.push('/home');
+      navigate('/home');
     }
   };
 

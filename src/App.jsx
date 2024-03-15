@@ -1,13 +1,35 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { useState, createContext, useEffect ,useContext } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Adjust the import statement
+
 import "./App.css";
 import MovieCard from "./components/MovieCard";
 import Header from "./components/Header";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import "../src/components/Log_sign.css";
+import FavoriteMovies from "./components/FavoriteMovies";
+import Home from "./components/home";
+
+const favContext = createContext();
 
 function App() {
+  const [favMovies, setFavMovies] = useState([]);
+  console.log(favMovies);
+
+  const addFav = (movie) => {
+    setFavMovies((prevItems) => [...prevItems, movie]);
+  };
+
+  const removeFav = (movieId) => {
+    setFavMovies((prevItems) =>
+      prevItems.filter((item) => item.id !== movieId)
+    );
+  };
+  const movieContextValue = {
+    favMovies,
+    addFav,
+    removeFav,
+  };
   const API_URL =
     "https://api.themoviedb.org/3/movie/popular?api_key=5fe36522e1bd3066b9333dbc4be8d12e&language=en-US";
   const [movies, setMovies] = useState([]);
@@ -29,32 +51,26 @@ function App() {
   };
 
   return (
+    <favContext.Provider value={movieContextValue}>
     <Router>
       <div className="app">
         <Header setSearchTerm={setSearchTerm} />
-
-        <Switch>
-          <Route path="/home">
-            <div className="movies">
-              {filteredMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </div>
-          </Route>
-          <Route path="/movies">
-            <div className="movies">
-              {filteredMovies.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))}
-            </div>
-          </Route>
-
-         <Route path="/signup" render={(props) => <SignUp {...props} onSignUp={handleSignUp} />} />
-          <Route path="/login" render={(props) => <Login {...props} signUpData={signUpData} />} /> 
-        </Switch>
+        <Routes>
+        
+          <Route path="/home" element={<Home movies={movies} searchTerm={searchTerm} />} />
+          <Route path="/movies" element={<Home movies={movies} searchTerm={searchTerm} />} />
+          <Route path="/favorite" element={<FavoriteMovies />} />
+          <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
+          <Route path="/login" element={<Login signUpData={signUpData} />} />
+        </Routes>
       </div>
     </Router>
+  </favContext.Provider>
+    
   );
 }
+const useFavMovie = () => useContext(favContext);
+
+export { useFavMovie, favContext };
 
 export default App;
