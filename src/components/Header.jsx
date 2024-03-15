@@ -48,7 +48,7 @@ function Header({ setSearchTerm }) {
                   placeholder="Search Movies"
                   onChange={handleSearch}
                 />
-                <button>Search</button>
+                <button id="search">Search</button>
               </form>
             </li>
           </ul>
