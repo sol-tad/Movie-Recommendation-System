@@ -1,0 +1,13 @@
+.details{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background: linear-gradient(rgb(255, 30, 30),white,black);
+}
+.overviews,.description{
+    width: 60%;
+}
+.description p{
+    font-size: larger;
+    font-weight: bold;
+}

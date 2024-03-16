@@ -1,6 +1,6 @@
 .movies {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(4, 1fr); /* Five columns, each occupying equal space */
   
-    gap: 20px; /* Adjust the gap between cards as needed */
+    /* gap: 20px; Adjust the gap between cards as needed */ */
   }

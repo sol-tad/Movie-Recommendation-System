@@ -4,7 +4,7 @@ import "./home.css";
 
 import Header from "./Header";
 import MovieCard from "./MovieCard";
-function Home() {
+function Home({ onSetDetails }) {
   const API_URL =
     "https://api.themoviedb.org/3/movie/popular?api_key=5fe36522e1bd3066b9333dbc4be8d12e&language=en-US";
   const [movies, setMovies] = useState([]);
@@ -16,7 +16,7 @@ function Home() {
       .then((data) => setMovies(data.results));
   }, []);
 
-  console.log(movies[1]?.adult);
+  // console.log(movies[1]?.adult);
   return (
     <div>
       <div className="app">
@@ -46,9 +46,19 @@ function Home() {
           watching movies sometimes or you're a big movie fan, our website has
           everything about movies that you need.
         </h1>
+        <h2
+          style={{
+            marginTop: "10px",
+            opacity: "0.9",
+            fontSize: "40px",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
+          Top rated/popular movies{" "}
+        </h2>
         <div className="movies">
-          {movies.map((movie) => (
-            <MovieCard movie={movie} />
+          {movies.map((movie, i) => (
+            <MovieCard onSetDetails={onSetDetails} movie={movie}  />
           ))}
         </div>
       </div>

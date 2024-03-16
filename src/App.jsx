@@ -10,12 +10,14 @@ import "../src/components/Log_sign.css";
 import FavoriteMovies from "./components/FavoriteMovies";
 import Home from "./components/home";
 import Movies from "./components/Movies";
+import Details from "./components/Details";
 
 const favContext = createContext();
 
 function App() {
+  const [details, setDetails] = useState({});
   const [favMovies, setFavMovies] = useState([]);
-  console.log(favMovies);
+  // console.log(favMovies);
 
   const addFav = (movie) => {
     setFavMovies((prevItems) => [...prevItems, movie]);
@@ -54,22 +56,39 @@ function App() {
   return (
     <favContext.Provider value={movieContextValue}>
       <Router>
-        
         <div className="app">
           <Header setSearchTerm={setSearchTerm} />
 
           <Routes>
             <Route
               path="/"
-              element={<Home movies={movies} searchTerm={searchTerm} />}
+              element={
+                <Home
+                  movies={movies}
+                  searchTerm={searchTerm}
+                  onSetDetails={setDetails}
+                />
+              }
             />
             <Route
               path="/home"
-              element={<Home movies={movies} searchTerm={searchTerm} />}
+              element={
+                <Home
+                  movies={movies}
+                  searchTerm={searchTerm}
+                  onSetDetails={setDetails}
+                />
+              }
             />
             <Route
               path="/movies"
-              element={<Movies movies={movies} searchTerm={searchTerm} />}
+              element={
+                <Movies
+                  movies={movies}
+                  searchTerm={searchTerm}
+                  onSetDetails={setDetails}
+                />
+              }
             />
             <Route path="/favorite" element={<FavoriteMovies />} />
             <Route
@@ -77,6 +96,7 @@ function App() {
               element={<SignUp onSignUp={handleSignUp} />}
             />
             <Route path="/login" element={<Login signUpData={signUpData} />} />
+            <Route path="/details" element={<Details details={details} />} />
           </Routes>
         </div>
       </Router>

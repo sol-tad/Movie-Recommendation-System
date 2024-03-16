@@ -15,27 +15,27 @@ function Header({ setSearchTerm }) {
         <div className="header_left">
           <ul>
             <li>
-              <NavLink to="/home" className="Link" activeClassName="active">
+              <NavLink to="/home" className="Link">
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to="/movies" className="Link" activeClassName="active">
+              <NavLink to="/movies" className="Link">
                 Movies
               </NavLink>
             </li>
             <li>
-              <NavLink to="/Favorite" className="Link" activeClassName="active">
+              <NavLink to="/Favorite" className="Link">
                 Favorites
               </NavLink>
             </li>
             <li>
-              <NavLink to="/signup" className="Link" activeClassName="active">
+              <NavLink to="/signup" className="Link">
                 Sign Up
               </NavLink>
             </li>
             <li>
-              <NavLink to="/login" className="Link" activeClassName="active">
+              <NavLink to="/login" className="Link">
                 Login
               </NavLink>
             </li>
