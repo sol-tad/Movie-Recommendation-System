@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect ,useContext } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Adjust the import statement
 
 import "./App.css";
@@ -52,21 +52,32 @@ function App() {
 
   return (
     <favContext.Provider value={movieContextValue}>
-    <Router>
-      <div className="app">
-        <Header setSearchTerm={setSearchTerm} />
-        <Routes>
-        
-          <Route path="/home" element={<Home movies={movies} searchTerm={searchTerm} />} />
-          <Route path="/movies" element={<Home movies={movies} searchTerm={searchTerm} />} />
-          <Route path="/favorite" element={<FavoriteMovies />} />
-          <Route path="/signup" element={<SignUp onSignUp={handleSignUp} />} />
-          <Route path="/login" element={<Login signUpData={signUpData} />} />
-        </Routes>
-      </div>
-    </Router>
-  </favContext.Provider>
-    
+      <Router>
+        <div className="app">
+          <Header setSearchTerm={setSearchTerm} />
+          <Routes>
+            <Route
+              path="/"
+              element={<Home movies={movies} searchTerm={searchTerm} />}
+            />
+            <Route
+              path="/home"
+              element={<Home movies={movies} searchTerm={searchTerm} />}
+            />
+            <Route
+              path="/movies"
+              element={<Home movies={movies} searchTerm={searchTerm} />}
+            />
+            <Route path="/favorite" element={<FavoriteMovies />} />
+            <Route
+              path="/signup"
+              element={<SignUp onSignUp={handleSignUp} />}
+            />
+            <Route path="/login" element={<Login signUpData={signUpData} />} />
+          </Routes>
+        </div>
+      </Router>
+    </favContext.Provider>
   );
 }
 const useFavMovie = () => useContext(favContext);
