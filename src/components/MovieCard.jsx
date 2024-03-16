@@ -32,11 +32,17 @@ function MovieCard({ movie, onSetDetails }) {
         </NavLink>
 
         <div className="info">
-          <p className="title">
+          <p
+            className="title"
+            style={{
+              whiteSpace: "nowrap",
+            }}
+          >
+            📽
             {movie.title || movie.name || movie.vote_average}
           </p>
-          <p className="date">{movie.release_date || movie.first_air_date}</p>
-          <p className="vote">{movie.vote_average}</p>
+          <p className="date">📅{movie.release_date || movie.first_air_date}</p>
+          <p className="vote">🌟{movie.vote_average}</p>
         </div>
         <div>
           <button onClick={handleCardAction} className="favorite">

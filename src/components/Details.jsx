@@ -14,9 +14,13 @@ function Details({ details }) {
       </div>
       <div>
         <div className="description">
-            <h2>Details</h2>
-          <p className="title">🎬{details.title}</p>
-          <p className="date">📅{details.release_date}</p>
+          <h2>Details</h2>
+          <p className="title">
+            🎬 {details.title || details.name || details.vote_average}
+          </p>
+          <p className="date">
+            📅{details.release_date || details.first_air_date}
+          </p>
           <p className="vote">⭐{details.vote_average}</p>
         </div>
         <div className="overviews">
