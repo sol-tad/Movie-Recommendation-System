@@ -20,6 +20,32 @@ function Home() {
   return (
     <div>
       <div className="app">
+        <img
+          src="https://wallpapershome.com/images/pages/pic_h/16109.jpg"
+          alt=""
+          style={{
+            height: "100vh",
+            width: "100vw",
+          }}
+        />
+        <h1
+          style={{
+            position: "absolute",
+            top: "30vh",
+            left: "100px",
+            zIndex: "1",
+            color: "white",
+            width: "80%",
+            lineHeight: "2",
+            opacity: "0.9",
+            fontSize: "50px",
+            fontFamily: "Arial, sans-serif",
+          }}
+        >
+          Welcome to the best place for movie fans! Whether you just like
+          watching movies sometimes or you're a big movie fan, our website has
+          everything about movies that you need.
+        </h1>
         <div className="movies">
           {movies.map((movie) => (
             <MovieCard movie={movie} />

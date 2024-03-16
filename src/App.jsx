@@ -9,6 +9,7 @@ import SignUp from "./components/SignUp";
 import "../src/components/Log_sign.css";
 import FavoriteMovies from "./components/FavoriteMovies";
 import Home from "./components/home";
+import Movies from "./components/Movies";
 
 const favContext = createContext();
 
@@ -53,8 +54,10 @@ function App() {
   return (
     <favContext.Provider value={movieContextValue}>
       <Router>
+        
         <div className="app">
           <Header setSearchTerm={setSearchTerm} />
+
           <Routes>
             <Route
               path="/"
@@ -66,7 +69,7 @@ function App() {
             />
             <Route
               path="/movies"
-              element={<Home movies={movies} searchTerm={searchTerm} />}
+              element={<Movies movies={movies} searchTerm={searchTerm} />}
             />
             <Route path="/favorite" element={<FavoriteMovies />} />
             <Route
