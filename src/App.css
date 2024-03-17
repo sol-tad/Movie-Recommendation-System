@@ -3,15 +3,14 @@
   margin: 0;
 }
 .app {
-  /* margin: 1.5rem;
-  padding: 5px; */
   background-color: rgb(251, 251, 251);
+  position: relative;
 }
 .app .movies {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content: space-around;
 }
 .searchNav {
   display: flex;

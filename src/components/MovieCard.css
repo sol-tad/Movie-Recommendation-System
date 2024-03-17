@@ -22,7 +22,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(rgb(4, 226, 4), rgb(0, 242, 255), purple);
   overflow: auto;
   margin-top: 3.5rem;
   border-radius: 1.5rem;
@@ -34,7 +33,7 @@
 } */
 .favorite {
   padding: 10px;
-  background: linear-gradient(rgb(85, 236, 15), rgb(5, 236, 101), blue);
+  background: linear-gradient(rgb(252, 12, 12), rgb(255, 40, 40), rgb(187, 187, 255));
   font-size: medium;
   width: 100%;
 }

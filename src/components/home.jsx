@@ -29,17 +29,18 @@ function Home({ onSetDetails }) {
           }}
         />
         <h1
+          className="welcome"
           style={{
             position: "absolute",
             top: "30vh",
             left: "100px",
             zIndex: "1",
-            color: "white",
-            width: "80%",
-            lineHeight: "2",
+            width: "85%",
+            lineHeight: "1.8",
             opacity: "0.9",
-            fontSize: "50px",
+            fontSize: "45px",
             fontFamily: "Arial, sans-serif",
+            textAlign: "center",
           }}
         >
           Welcome to the best place for movie fans! Whether you just like
@@ -58,7 +59,7 @@ function Home({ onSetDetails }) {
         </h2>
         <div className="movies">
           {movies.map((movie, i) => (
-            <MovieCard onSetDetails={onSetDetails} movie={movie}  />
+            <MovieCard onSetDetails={onSetDetails} movie={movie} />
           ))}
         </div>
       </div>

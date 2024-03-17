@@ -11,6 +11,7 @@ import FavoriteMovies from "./components/FavoriteMovies";
 import Home from "./components/home";
 import Movies from "./components/Movies";
 import Details from "./components/Details";
+import Footer from "./components/Footer";
 
 const favContext = createContext();
 
@@ -98,6 +99,8 @@ function App() {
             <Route path="/login" element={<Login signUpData={signUpData} />} />
             <Route path="/details" element={<Details details={details} />} />
           </Routes>
+
+          <Footer/>
         </div>
       </Router>
     </favContext.Provider>

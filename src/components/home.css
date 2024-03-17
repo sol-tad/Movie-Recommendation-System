@@ -1,3 +1,10 @@
 .movies{
     padding: 50px;
 }
+.welcome {
+  background-image: linear-gradient(to right, red, orange, yellow, rgb(23, 246, 23), blue, indigo, violet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+ 
+}
