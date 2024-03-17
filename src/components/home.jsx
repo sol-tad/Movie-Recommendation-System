@@ -4,9 +4,15 @@ import "./home.css";
 
 import Header from "./Header";
 import MovieCard from "./MovieCard";
-function Home({ onSetDetails }) {
-  const API_URL =
+function Home({ onSetDetails, searchTerm }) {
+  let API_URL =
     "https://api.themoviedb.org/3/movie/popular?api_key=5fe36522e1bd3066b9333dbc4be8d12e&language=en-US";
+  const API_SEARCH =
+    "https://api.themoviedb.org/3/search/movie?api_key=5fe36522e1bd3066b9333dbc4be8d12e&query=" +
+    searchTerm;
+  if (searchTerm !== "") {
+    API_URL = API_SEARCH;
+  }
   const [movies, setMovies] = useState([]);
 
   const [page, setPage] = useState();
@@ -14,7 +20,7 @@ function Home({ onSetDetails }) {
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => setMovies(data.results));
-  }, []);
+  }, [searchTerm]);
 
   // console.log(movies[1]?.adult);
   return (

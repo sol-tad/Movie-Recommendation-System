@@ -36,6 +36,10 @@ function App() {
   };
   const API_URL =
     "https://api.themoviedb.org/3/movie/popular?api_key=5fe36522e1bd3066b9333dbc4be8d12e&language=en-US";
+  const API_SEARCH =
+    "https://api.themoviedb.org/3/search/movie?api_key=5fe36522e1bd3066b9333dbc4be8d12e&query=";
+
+    
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [signUpData, setSignUpData] = useState([]);
@@ -58,7 +62,12 @@ function App() {
     <favContext.Provider value={movieContextValue}>
       <Router>
         <div className="app">
-          <Header setSearchTerm={setSearchTerm} />
+          <Header
+            setSearchTerm={setSearchTerm}
+            searchTerm={searchTerm}
+            setMovies={setMovies}
+            movies={movies}
+          />
 
           <Routes>
             <Route
@@ -100,7 +109,7 @@ function App() {
             <Route path="/details" element={<Details details={details} />} />
           </Routes>
 
-          <Footer/>
+          <Footer />
         </div>
       </Router>
     </favContext.Provider>

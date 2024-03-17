@@ -3,8 +3,21 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css";
 
-function Header({ setSearchTerm }) {
-  const handleSearch = (e) => setSearchTerm(e.target.value);
+function Header({ setSearchTerm, searchTerm, setMovies, movies }) {
+  const API_SEARCH =
+    "https://api.themoviedb.org/3/search/movie?api_key=5fe36522e1bd3066b9333dbc4be8d12e&query=";
+
+  // const handleSearch = (e) => setSearchTerm(e.target.value);
+  function handleSearch(e) {
+    e.preventDefault();
+
+    const search = API_SEARCH + searchTerm;
+    console.log(search);
+    fetch(search)
+      .then((res) => res.json())
+      .then((data) => setMovies(data.results));
+  }
+
   // const handleFavoriteLinkClick = () => {
   //   history.push("/favorite");
   // };
@@ -44,11 +57,11 @@ function Header({ setSearchTerm }) {
         <div className="header_right">
           <ul>
             <li>
-              <form>
+              <form onSubmit={(e) => handleSearch(e)}>
                 <input
                   type="text"
                   placeholder="Search Movies"
-                  onChange={handleSearch}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button id="search">Search</button>
               </form>
